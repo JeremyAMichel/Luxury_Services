@@ -46,7 +46,7 @@ class RegistrationController extends AbstractController
                 ->subject('Welcome abroad !')
                 // ->text('Sending emails is fun again!')
                 ->html('
-                <h2>Congratulation '.$user->getName().', your account has been created !</h2>
+                <h2>Congratulation your account has been created !</h2>
                 <p>fhdshfdhoishfisosdhgosdofdsjl</p>
                 ');
 
