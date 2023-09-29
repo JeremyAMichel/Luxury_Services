@@ -58,6 +58,8 @@ class ProfileController extends AbstractController
 
                 $profilPictureMedia = new Media();
                 $profilPictureMedia->setUrl($profilPictureName);
+                $profilPictureMedia->setOriginalName($profilPicture->getClientOriginalName());
+
                 $entityManager->persist($profilPictureMedia);
 
                 $candidate->setProfilPicture($profilPictureMedia);
@@ -67,7 +69,7 @@ class ProfileController extends AbstractController
             //PASSPORT
             if ($formCandidate['passportFile']->getData()) {
                 /**
-                 * @var UploadedFile $profilPicture
+                 * @var UploadedFile $passportFile
                  */
                 $passportFile = $formCandidate['passportFile']->getData();
 
@@ -82,9 +84,37 @@ class ProfileController extends AbstractController
 
                 $passportFileMedia = new Media();
                 $passportFileMedia->setUrl($passportFileName);
+                $passportFileMedia->setOriginalName($passportFile->getClientOriginalName());
+
                 $entityManager->persist($passportFileMedia);
 
                 $candidate->setPassportFile($passportFileMedia);
+
+            }
+
+            //CV
+            if ($formCandidate['curriculumVitae']->getData()) {
+                /**
+                 * @var UploadedFile $curriculumVitae
+                 */
+                $curriculumVitae = $formCandidate['curriculumVitae']->getData();
+
+                $curriculumVitaeName = Uuid::v7() . $curriculumVitae->getClientOriginalName();
+             
+                $extension = $curriculumVitae->guessExtension();
+                if(!$extension) {
+                    $extension = 'png';
+                    $curriculumVitaeName . $extension;
+                }
+                $curriculumVitae->move('medias/passports', $curriculumVitaeName);
+
+                $curriculumVitaeMedia = new Media();
+                $curriculumVitaeMedia->setUrl($curriculumVitaeName);
+                $curriculumVitaeMedia->setOriginalName($curriculumVitae->getClientOriginalName());
+
+                $entityManager->persist($curriculumVitaeMedia);
+
+                $candidate->setCurriculumVitae($curriculumVitaeMedia);
 
             }
 

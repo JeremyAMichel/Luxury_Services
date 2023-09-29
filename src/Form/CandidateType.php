@@ -87,7 +87,14 @@ class CandidateType extends AbstractType
                 ],
                 'required' => false
             ])
-            // ->add('curriculumVitae')
+            ->add('curriculumVitae', FileType::class, [
+                'mapped' => false,
+                'attr' => [
+                    'size' => 20000000,
+                    'accept' => '.pdf,.jpg,.doc,.docx,.png,.gif',
+                ],
+                'required' => false
+            ])
             
             ->add('category', EntityType::class, [
                 'class' => Category::class,

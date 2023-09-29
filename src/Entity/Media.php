@@ -19,6 +19,9 @@ class Media
     #[ORM\OneToOne(mappedBy: 'passportFile', cascade: ['persist', 'remove'])]
     private ?Candidate $candidate = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $originalName = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -49,6 +52,18 @@ class Media
         }
 
         $this->candidate = $candidate;
+
+        return $this;
+    }
+
+    public function getOriginalName(): ?string
+    {
+        return $this->originalName;
+    }
+
+    public function setOriginalName(string $originalName): static
+    {
+        $this->originalName = $originalName;
 
         return $this;
     }
