@@ -1,0 +1,72 @@
+easy_admin:
+    entities:
+        Candidate:
+            class: App\Entity\Candidate
+            label: Candidates
+            list:
+                fields:
+                    - 'firstName'
+                    - 'lastName'
+                    - 'adress'
+                    - 'country'
+                    - 'nationality'
+                    - 'isPassportValid'
+                    - 'currentLocation'
+                    - 'birthAt'
+                    - 'placeOfBirth'
+                    - 'isAvailable'
+                    - 'category.name' # Assuming 'category' is a ManyToOne relationship to an entity with a 'name' property
+                    - 'experience.name' # Assuming 'experience' is a ManyToOne relationship to an entity with a 'name' property
+                    - 'createdAt'
+                    - 'updatedAt'
+                actions:
+                    - 'show'
+            show:
+                fields:
+                    - 'firstName'
+                    - 'lastName'
+                    - 'adress'
+                    - 'country'
+                    - 'nationality'
+                    - 'isPassportValid'
+                    - 'passportFile'
+                    - 'curriculumVitae'
+                    - 'profilPicture'
+                    - 'currentLocation'
+                    - 'birthAt'
+                    - 'placeOfBirth'
+                    - 'isAvailable'
+                    - 'category.name' # Assuming 'category' is a ManyToOne relationship to an entity with a 'name' property
+                    - 'experience.experience' # Assuming 'experience' is a ManyToOne relationship to an entity with a 'name' property
+                    - 'shortDescription'
+                    - 'notes'
+                    - 'createdAt'
+                    - 'updatedAt'
+            edit:
+                fields:
+                    - { property: 'firstName', type: 'text' }
+                    - { property: 'lastName', type: 'text', canEdit: false }
+                    - 'adress'
+                    - 'country'
+                    - 'nationality'
+                    - 'isPassportValid'
+                    - 'passportFile'
+                    - 'curriculumVitae'
+                    - 'profilPicture'
+                    - 'currentLocation'
+                    - 'birthAt'
+                    - 'placeOfBirth'
+                    - 'isAvailable'
+                    - 'category'
+                    - 'experience'
+                    - 'shortDescription'
+                    - 'notes'
+                actions:
+                    - 'show'
+            delete:
+                fields:
+                    - 'firstName'
+                    - { property: 'lastName', type: 'text', canDelete: false }
+                actions:
+                    - { name: 'show', label: 'Show' }
+                    - { name: 'delete', label: 'Delete', type: 'method', methodName: 'deleteAction', canDelete: false }
