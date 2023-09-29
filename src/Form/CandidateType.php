@@ -9,6 +9,7 @@ use App\Entity\Gender;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -70,9 +71,24 @@ class CandidateType extends AbstractType
                 'class' => Gender::class,
                 'choice_label' => 'name'
             ])
-            // ->add('passportFile')
+            ->add('profilPicture', FileType::class, [
+                'mapped' => false,
+                'attr' => [
+                    'size' => 20000000,
+                    'accept' => '.pdf,.jpg,.doc,.docx,.png,.gif',
+                ],
+                'required' => false
+            ])
+            ->add('passportFile', FileType::class, [
+                'mapped' => false,
+                'attr' => [
+                    'size' => 20000000,
+                    'accept' => '.pdf,.jpg,.doc,.docx,.png,.gif',
+                ],
+                'required' => false
+            ])
             // ->add('curriculumVitae')
-            // ->add('profilPicture')
+            
             ->add('category', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'name',

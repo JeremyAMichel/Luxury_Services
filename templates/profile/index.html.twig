@@ -193,7 +193,8 @@ $(handler);
 									<span>
 										<i class="material-icons">insert_photo</i>
 										Photo</span>
-									<input id="photo" size="20000000" accept=".pdf,.jpg,.doc,.docx,.png,.gif" name="photo" type="file">
+									{# <input id="photo" size="20000000" accept=".pdf,.jpg,.doc,.docx,.png,.gif" name="photo" type="file"> #}
+									{{ form_widget(formCandidate.profilPicture) }}
 								</div>
 
 								<div class="existing-file">
@@ -245,7 +246,8 @@ $(handler);
 										<span>
 											<i class="material-icons">&#xE24D;</i>
 											Passport</span>
-										<input id="passport" size="20000000" accept=".pdf,.jpg,.doc,.docx,.png,.gif" name="passport" type="file">
+											{{ form_widget(formCandidate.passportFile) }}
+										{# <input id="passport" size="20000000" accept=".pdf,.jpg,.doc,.docx,.png,.gif" name="passport" type="file"> #}
 									</div>
 									<div class="existing-file">
 										<a href="#!" target="_blank">
