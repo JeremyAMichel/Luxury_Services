@@ -156,7 +156,9 @@ $(handler);
 						<h3 class="text-extrabold">Your personal informations</h3>
 						<div class="col-xs-12 col-sm-6 col-md-4">
 							<div class="input-field">
-								{{ form_widget(formCandidate.gender) }}
+								{{ form_widget(formCandidate.gender, {
+									'id' : 'gender',
+								}) }}
 								<label for="gender" class="active">Gender</label>
 							</div>
 						</div>
@@ -292,13 +294,13 @@ $(handler);
 							<div class="col-xs-12 col-sm-12">
 								<div class="input-field" style="margin-top: 5px;">
 									{{ form_widget(formCandidate.category) }}
-									<label for="job_sector" class="active">Interest in job sector</label>
+									<label for="candidate_category" class="active">Interest in job sector</label>
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-12">
 								<div class="input-field">
 									{{ form_widget(formCandidate.experience) }}
-									<label for="experience" class="active">Experience</label>
+									<label for="candidate_experience" class="active">Experience</label>
 								</div>
 							</div>
 						</div>

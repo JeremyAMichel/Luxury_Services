@@ -118,7 +118,6 @@ class ProfileController extends AbstractController
 
             }
 
-
             $entityManager->persist($candidate);
             $entityManager->flush();
         }
